@@ -31,8 +31,7 @@ namespace ApiProjectBeer.Controllers
             return this.repo.SearchCategory(id);
         }
 
-        [Route("[action]/{id}")]
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void DeleteCategory(int id)
         {
             this.repo.DeleteCategory(id);

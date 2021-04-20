@@ -1,7 +1,9 @@
 using ApiProjectBeer.Data;
+using ApiProjectBeer.Token;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +45,11 @@ namespace ApiProjectBeer
                 });
             });
 
+            HelperToken helper = new HelperToken(this.Configuration);
+            //AÑADIMOS AUTENTIFICACION A NUESTRO SERVICIO
+            services.AddAuthentication(helper.GetAuthOptions())
+                .AddJwtBearer(helper.GetJwtOptions());
+
             services.AddControllers();
         }
 
@@ -65,6 +72,7 @@ namespace ApiProjectBeer
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

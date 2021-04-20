@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectBeer.Models;
 using ProjectBeer.Repositories;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace ApiProjectBeer.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     /* Both for rating and beerrating (view with avg score) */
     public class RatingController : ControllerBase

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectBeer.Models;
 using ProjectBeer.Repositories;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace ApiProjectBeer.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -20,7 +22,7 @@ namespace ApiProjectBeer.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<User>> GetCategories()
+        public ActionResult<List<User>> GetUsers()
         {
             return this.repo.GetUsers();
         }

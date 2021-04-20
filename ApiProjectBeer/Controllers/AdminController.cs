@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectBeer.Models;
 using ProjectBeer.Repositories;
@@ -11,6 +12,7 @@ namespace ApiProjectBeer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles="Admin")]
     public class AdminController : ControllerBase
     {
         RepositoryBeer repo;

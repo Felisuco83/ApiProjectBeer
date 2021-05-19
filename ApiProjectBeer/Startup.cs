@@ -34,6 +34,11 @@ namespace ApiProjectBeer
             string cadena = this.Configuration.GetConnectionString("cadenaazure");
             services.AddTransient<RepositoryBeer>();
             services.AddDbContext<BeerContext>(x => x.UseSqlServer(cadena));
+            
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             services.AddSwaggerGen(x =>
             {
@@ -69,6 +74,8 @@ namespace ApiProjectBeer
             });
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseRouting();
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectBeer.Models
 {
-    [Table("APPUSER")]
+    [Table("AppUser")]
     public class User
     {
         [Key]
